@@ -1,7 +1,11 @@
+import Header from "@/components/Header";
 import { Domine, Mulish } from "next/font/google";
+import { globalStyles } from "./styles/global";
 
 const domine = Domine({ subsets: ["latin"] });
 const mulish = Mulish({ subsets: ["latin"] });
+
+globalStyles()
 
 export const metadata = {
   title: "InfoMart",
@@ -16,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt">
-      <body className={domine.className + mulish.className}>{children}</body>
+      <body className={domine.className + mulish.className}>
+        <Header/>
+        {children}
+      </body>
     </html>
   );
 }
