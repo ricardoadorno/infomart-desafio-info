@@ -1,9 +1,14 @@
 import Header from "@/components/Header";
-import { Roboto } from "next/font/google";
-import { globalStyles } from "./styles/global";
-import { getCssText } from "./styles";
+import { Domine, Mulish } from "next/font/google";
+import { globalStyles } from "../styles/global";
+import { getCssText } from "../styles";
 
-const roboto = Roboto({ 
+const domine = Domine({ 
+  subsets: ["latin"],
+  weight: ["400", "700"] 
+});
+
+const mulish = Mulish({ 
   subsets: ["latin"],
   weight: ["400", "700"] 
 });
@@ -27,7 +32,7 @@ export default function RootLayout({
       <head>
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
       </head>
-      <body className={roboto.className}>
+      <body className={domine.className + mulish.className}>
         <Header/>
         {children}
       </body>
