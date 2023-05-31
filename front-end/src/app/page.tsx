@@ -1,10 +1,12 @@
 import Hero from "@/components/Hero";
+import Suggestions from "@/components/Suggestions";
 
 export default function Home() {
   return (
     <>
       <Container>
         <Hero />
+        <Suggestions />
       </Container>
     </>
   );
