@@ -1,10 +1,19 @@
-import Link from "next/link";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
     <>
-      <main>Hello World</main>
-      <Link href="/categories/padaria">Padaria</Link>
+      <Container>
+        <Hero />
+      </Container>
     </>
   );
 }
+
+import { styled } from "@/styles";
+
+export const Container = styled("div", {
+  maxWidth: "1000px",
+  margin: "0 auto",
+  padding: "0 1rem",
+});
