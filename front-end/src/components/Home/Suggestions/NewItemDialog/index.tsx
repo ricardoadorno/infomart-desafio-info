@@ -15,7 +15,7 @@ export default () => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
       <AddItemComponent>
-        <h2>Ou adicione um item personalizado</h2>
+        <h3>Ou adicione um item personalizado</h3>
         <CreateItem>
           <img src={addItem.src} alt="add-item" />
           <small>Crie seu item</small>

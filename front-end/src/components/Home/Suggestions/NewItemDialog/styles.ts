@@ -1,18 +1,5 @@
 import { keyframes, styled } from "@/styles";
-
-import {
-  DialogOverlay,
-  DialogContent,
-  DialogClose,
-} from "@radix-ui/react-dialog";
-
-export const StyledDialogOverlay = styled(DialogOverlay, {
-  backgroundColor: "#FF5A1161",
-  position: "fixed",
-  inset: 0,
-});
-
-const contentShow = keyframes({
+const contentShowAnimation = keyframes({
   "0%": {
     opacity: "0",
     transform: "translate(-50%, -50%) scale(0.5)",
@@ -21,6 +8,26 @@ const contentShow = keyframes({
     opacity: "1",
     transform: "translate(-50%, -50%) scale(1)",
   },
+});
+
+import {
+  DialogOverlay,
+  DialogContent,
+  DialogClose,
+} from "@radix-ui/react-dialog";
+
+export const AddItemComponent = styled("div", {
+  h3: {
+    fontSize: "$h3",
+    color: "$black",
+    fontWeight: "700",
+  },
+});
+
+export const StyledDialogOverlay = styled(DialogOverlay, {
+  backgroundColor: "#FF5A1161",
+  position: "fixed",
+  inset: 0,
 });
 
 export const StyledDialogContent = styled(DialogContent, {
@@ -35,7 +42,7 @@ export const StyledDialogContent = styled(DialogContent, {
   width: "90vw",
   maxWidth: "500px",
   maxHeight: "85vh",
-  animation: `${contentShow}  150ms cubic-bezier(0.16, 1, 0.3, 1)  `,
+  animation: `${contentShowAnimation}  150ms cubic-bezier(0.16, 1, 0.3, 1)  `,
 
   section: {
     width: "100%",
@@ -79,10 +86,8 @@ export const StyledImputGroup = styled("div", {
   },
 });
 
-export const AddItemComponent = styled("div", {});
-
 export const CreateItem = styled("div", {
-  backgroundColor: "#DEDEDE",
+  backgroundColor: "$gray",
   width: "495px",
   height: "217px",
 
@@ -95,7 +100,7 @@ export const CreateItem = styled("div", {
 
   small: {
     color: "#FF5A11",
-    fontWeight: "bolder",
+    fontWeight: "700",
   },
 });
 

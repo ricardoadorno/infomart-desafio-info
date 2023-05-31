@@ -1,23 +1,38 @@
 import { styled } from "@/styles";
 
 export const CarouselContainer = styled("div", {
-  section: {
-    display: "flex",
-    gap: "1rem",
+  h3: {
+    fontSize: "$h3",
+    color: "$black",
+  },
+});
 
-    overflowX: "scroll",
-    cursor: "grab",
-    userSelect: "none",
-    "-webkit-overflow-scrolling": "touch",
-    "&:active": {
-      cursor: "grabbing",
+export const Carousel = styled("div", {
+  marginTop: ".6rem",
+
+  display: "flex",
+  height: "347px",
+  overflowX: "auto",
+  justifyContent: "space-between",
+  gap: "1rem",
+
+  scrollbarWidth: "thin",
+
+  "&::-webkit-scrollbar": {
+    marginTop: "1rem",
+  },
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: "#888",
+    borderRadius: "9999px",
+    "&:hover": {
+      backgroundColor: "#555",
     },
   },
 });
 
-export const Carousel = styled("div", {});
-
 export const CarouselItem = styled("div", {
+  flexShrink: "0",
+  flexBasis: "200px",
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
@@ -25,7 +40,8 @@ export const CarouselItem = styled("div", {
 
 export const ItemImage = styled("img", {
   width: "100%",
-  height: "100px",
+  height: "auto",
+  borderRadius: "10px",
 });
 
 export const ItemInfo = styled("div", {
@@ -33,12 +49,19 @@ export const ItemInfo = styled("div", {
   gridTemplateColumns: "1fr 1fr",
   rowGap: ".5rem",
   marginBottom: ".5rem",
+  fontWeight: "700",
 
-  h3: {
-    margin: "0",
+  p: {
+    color: "$black",
   },
 
   span: {
     textAlign: "right",
+    color: "$primary",
+  },
+
+  small: {
+    color: "$placeholder",
+    gridColumn: "1 / span 2",
   },
 });
