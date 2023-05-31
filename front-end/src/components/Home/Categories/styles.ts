@@ -32,6 +32,7 @@ export const CardImage = styled("img", {
 
 export const H2 = styled("h2", {
   fontSize: "$h2",
+  fontFamily: "$serif",
   fontWeight: "700",
   margin: "2rem 0 2rem 0",
 });
