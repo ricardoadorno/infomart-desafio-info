@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CardsContainer, CategoriesCard, CardImage, H2 } from "./styles";
 
 export default function Categories() {
@@ -8,22 +9,30 @@ export default function Categories() {
         <CategoriesCard>
           <CardImage src="https://placehold.it/300x450" alt="Category 1" />
           <h3>Category 1</h3>
-          <button>Confira</button>
+          <Link href="/category/1">
+            <button>Confira</button>
+          </Link>
         </CategoriesCard>
         <CategoriesCard>
           <CardImage src="https://placehold.it/300x450" alt="Category 1" />
           <h3>Category 1</h3>
-          <button>Confira</button>
+          <Link href="/category/1">
+            <button>Confira</button>
+          </Link>
         </CategoriesCard>
         <CategoriesCard>
           <CardImage src="https://placehold.it/300x450" alt="Category 1" />
           <h3>Category 1</h3>
-          <button>Confira</button>
+          <Link href="/category/1">
+            <button>Confira</button>
+          </Link>
         </CategoriesCard>
         <CategoriesCard>
           <CardImage src="https://placehold.it/300x450" alt="Category 1" />
           <h3>Category 1</h3>
-          <button>Confira</button>
+          <Link href="/category/1">
+            <button>Confira</button>
+          </Link>
         </CategoriesCard>
       </CardsContainer>
     </>

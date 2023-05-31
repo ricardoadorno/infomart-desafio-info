@@ -38,11 +38,12 @@ export const StyledDialogContent = styled(DialogContent, {
   animation: `${contentShow}  150ms cubic-bezier(0.16, 1, 0.3, 1)  `,
 
   section: {
+    width: "100%",
     padding: "2rem",
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     rowGap: "2rem",
-    columnGap: "3rem",
+    columnGap: "2rem",
   },
 
   header: {
