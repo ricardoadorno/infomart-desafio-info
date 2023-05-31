@@ -9,19 +9,18 @@ export const CardsContainer = styled("div", {
 
 export const CategoriesCard = styled("div", {
   width: "auto",
-
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
+  justifyContent: "space-between",
+  gap: "1rem",
   alignItems: "center",
   borderRadius: "0.5rem",
   boxShadow: "0 0 0.5rem rgba(0, 0, 0, 0.1)",
-  transition: "all 0.2s ease-in-out",
   backgroundColor: "$gray",
   paddingBottom: "3rem",
 
   h3: {
-    fontSize: "1.5rem",
+    fontSize: "$h3",
   },
 });
 
@@ -32,6 +31,7 @@ export const CardImage = styled("img", {
 });
 
 export const H2 = styled("h2", {
-  fontSize: "2rem",
-  fontWeight: "bold",
+  fontSize: "$h2",
+  fontWeight: "700",
+  margin: "2rem 0 2rem 0",
 });

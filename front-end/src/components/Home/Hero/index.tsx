@@ -4,13 +4,13 @@ import heroImage from "@/assets/images/hero-img.png";
 export default function Hero() {
   return (
     <HeroContainer>
-      <div>
+      <hgroup>
         <h1>Listas de compra nunca foram tão simples!</h1>
-        <p>
+        <h4>
           Com um clique construa sua lista de compras gratuitamente de forma
           rápida
-        </p>
-      </div>
+        </h4>
+      </hgroup>
       <HeroImage src={heroImage.src} alt="hero" />
     </HeroContainer>
   );
