@@ -6,7 +6,8 @@ services:
     restart: unless-stopped
     env_file: ./.env
     environment:
-      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
     ports:
       - '3306:3306'
@@ -14,28 +15,6 @@ services:
       - '3306'
     volumes:
       - db:/var/lib/mysqlcm
-
-  app:
-    depends_on:
-      - mysqldb
-    build: 
-        context: .
-        dockerfile: ./Dockerfile
-    restart: unless-stopped
-    env_file: ./.env
-    ports:
-      - '5000:5000'
-    expose:
-      - '5000'
-    environment:
-      - DB_HOST=${DB_HOST}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
-      - DB_PORT=${DB_PORT}
-      - DATABASE_URL=mysql://${DB_USER}:${DB_PASSWORD}@mysqldb:${DB_PORT}/${DB_NAME}
-    stdin_open: true
-    tty: true
 
 volumes:
   db:

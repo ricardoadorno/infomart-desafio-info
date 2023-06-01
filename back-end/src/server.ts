@@ -19,55 +19,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
+
 app.get("/", async (req: Request, res: Response) => {
 
-  console.log(process.env.DATABASE_URL)
-  try {
-    const product = await prismaClient.product.create({
-      data: {
-        category: "A",
-        description: "w",
-        isFavorite: false,
-        name: "product 1",
-        price: 25.6,
-      }
-    })
+    res.status(200).json("ok");
 
-    await prismaClient.$disconnect();
-
-    const list = await prismaClient.listProduct.create({
-      data: {
-        name: "lista 1",
-      }
-    })
-
-    await prismaClient.product.update({
-      where: {
-        id: product.id,
-      },
-      data: {
-        listProduct: {
-          connect: {
-            id: list.id,
-          },
-        },
-      },
-    });
-    const listWihtProduct = await prismaClient.listProduct.findUnique({
-      where: {
-        id: list.id,
-      },
-      include: {
-        products: true,
-      },
-    });
-    res.status(200).json(listWihtProduct);
-
-  } catch (error) {
-    console.log(error);
-    await prismaClient.$disconnect();
-    res.status(500).json(error);
-  }
 });
 
 

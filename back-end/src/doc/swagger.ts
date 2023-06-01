@@ -17,24 +17,7 @@ export const swaggerDocument = {
   schemes: ["http"],
   consumes: ["application/json"],
   produces: ["application/json"],
-  paths: {
-    "/products": {
-      post: {
-        sumary: "Cadastro de produtos",
-        description: "Essa rota é a responsável por cadsatrar um novo produto!",
-        tags: ["Products"],
-        requestBody: {
-          content: {
-            "application/json": {
-              schema: {
-                $ref: "#/components/schemas/Product",
-              },
-            },
-          },
-        },
-      },
-    },
-  },
+  paths: {},
 
   components: {
     schemas: {
