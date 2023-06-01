@@ -1,55 +1,35 @@
-import {
-  CarouselContainer,
-  Carousel,
-  CarouselItem,
-  ItemImage,
-  ItemInfo,
-} from "./styles";
+import CarouselItem from "./CarouselItem/CarouselItem";
+import { CarouselContainer, Carousel } from "./styles";
+
+const itemsPropsPlaceholder = [
+  {
+    name: "Item 1",
+    price: 49.99,
+    category: "Fruta",
+    imageUrl: "https:/placehold.it/200x200",
+  },
+  {
+    name: "Item 1",
+    price: 49.99,
+    category: "Fruta",
+    imageUrl: "https:/placehold.it/200x200",
+  },
+  {
+    name: "Item 1",
+    price: 49.99,
+    category: "Fruta",
+    imageUrl: "https:/placehold.it/200x200",
+  },
+];
 
 export default function SuggestionCarousel() {
   return (
     <CarouselContainer>
       <h3>Algumas sugestões</h3>
       <Carousel>
-        <CarouselItem>
-          <ItemImage
-            draggable="false"
-            src="https:/placehold.it/200x200"
-            alt="suggestion"
-          />
-          <ItemInfo>
-            <p>Item 1</p>
-            <span>R$ 49,99</span>
-            <small>Categoria: Fruta</small>
-          </ItemInfo>
-          <button>+Lista</button>
-        </CarouselItem>
-        <CarouselItem>
-          <ItemImage
-            draggable="false"
-            src="https:/placehold.it/200x200"
-            alt="suggestion"
-          />
-          <ItemInfo>
-            <p>Item 1</p>
-            <span>R$ 49,99</span>
-            <small>Categoria: Fruta</small>
-          </ItemInfo>
-          <button>+Lista</button>
-        </CarouselItem>
-        <CarouselItem>
-          <ItemImage
-            draggable="false"
-            src="https:/placehold.it/200x200"
-            alt="suggestion"
-          />
-          <ItemInfo>
-            <p>Item 1</p>
-            <span>R$ 49,99</span>
-            <small>Categoria: Fruta</small>
-          </ItemInfo>
-          <button>+Lista</button>
-        </CarouselItem>
+        {itemsPropsPlaceholder.map((itemPropsPlaceholder, index) => (
+          <CarouselItem key={index} item={itemPropsPlaceholder} />
+        ))}
       </Carousel>
     </CarouselContainer>
   );

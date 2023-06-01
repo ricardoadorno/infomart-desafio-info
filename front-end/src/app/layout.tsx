@@ -33,14 +33,6 @@ export default function RootLayout({
           id="stitches"
           dangerouslySetInnerHTML={{ __html: getCssText() }}
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        ></link>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        ></link>
       </head>
       <body className={domine.className + mulish.className}>
         <Header />
