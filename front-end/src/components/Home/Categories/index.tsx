@@ -13,28 +13,28 @@ export default function Categories() {
         <CategoriesCard>
           <CardImage src={padaria.src} alt="Padaria" />
           <h3>Padaria</h3>
-          <Link href="/category/padaria">
+          <Link href="/categories/padaria">
             <button>Confira</button>
           </Link>
         </CategoriesCard>
         <CategoriesCard>
           <CardImage src={hortifruti.src} alt="Hortifruti" />
           <h3>Hortifruti</h3>
-          <Link href="/category/hortifruti">
+          <Link href="/categories/hortifruti">
             <button>Confira</button>
           </Link>
         </CategoriesCard>
         <CategoriesCard>
           <CardImage src={limpeza.src} alt="Limpeza" />
           <h3>Limpeza</h3>
-          <Link href="/category/limpeza">
+          <Link href="/categories/limpeza">
             <button>Confira</button>
           </Link>
         </CategoriesCard>
         <CategoriesCard>
           <CardImage src={higiene.src} alt="Higiene" />
           <h3>Higiene</h3>
-          <Link href="/category/higiene">
+          <Link href="/categories/higiene">
             <button>Confira</button>
           </Link>
         </CategoriesCard>

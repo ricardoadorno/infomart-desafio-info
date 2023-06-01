@@ -21,6 +21,26 @@ export const AddItemComponent = styled("div", {
     fontSize: "$h3",
     color: "$black",
     fontWeight: "700",
+    marginBottom: "1rem",
+    textAlign: "center",
+  },
+});
+
+export const CreateItem = styled("div", {
+  backgroundColor: "$gray",
+  width: "100%",
+  height: "217px",
+
+  cursor: "pointer",
+  display: "flex",
+  gap: ".5rem",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+
+  small: {
+    color: "$primary",
+    fontWeight: "700",
   },
 });
 
@@ -40,7 +60,7 @@ export const StyledDialogContent = styled(DialogContent, {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "90vw",
-  maxWidth: "500px",
+  maxWidth: "600px",
   maxHeight: "85vh",
   animation: `${contentShowAnimation}  150ms cubic-bezier(0.16, 1, 0.3, 1)  `,
 
@@ -80,27 +100,12 @@ export const StyledImputGroup = styled("div", {
     border: "none",
     padding: "10px",
 
+    width: "100%",
+    boxSizing: "border-box",
+
     "&:placeholder": {
       color: "#9E9E9E",
     },
-  },
-});
-
-export const CreateItem = styled("div", {
-  backgroundColor: "$gray",
-  width: "495px",
-  height: "217px",
-
-  cursor: "pointer",
-  display: "flex",
-  gap: ".5rem",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-
-  small: {
-    color: "#FF5A11",
-    fontWeight: "700",
   },
 });
 

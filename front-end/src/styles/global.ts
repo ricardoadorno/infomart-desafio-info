@@ -1,4 +1,4 @@
-import { globalCss } from ".";
+import { globalCss, styled } from ".";
 
 export const globalStyles = globalCss({
   "*": {
@@ -12,9 +12,9 @@ export const globalStyles = globalCss({
   },
 
   "body, input, button, textarea": {
-    fontFamily: "'Roboto', sans-serif",
+    fontFamily: "$sans",
     fontSize: "1rem",
-    fontWeight: 400,
+    fontWeight: 700,
   },
 
   a: {
@@ -34,4 +34,9 @@ export const globalStyles = globalCss({
     borderRadius: "10px",
     cursor: "pointer",
   },
+});
+
+export const Container = styled("div", {
+  maxWidth: "1000px",
+  margin: "0 auto",
 });

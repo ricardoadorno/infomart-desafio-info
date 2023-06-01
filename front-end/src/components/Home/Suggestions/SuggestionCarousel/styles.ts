@@ -20,12 +20,13 @@ export const Carousel = styled("div", {
 
   "&::-webkit-scrollbar": {
     marginTop: "1rem",
+    height: "8px",
   },
   "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "#888",
+    backgroundColor: "$primary",
     borderRadius: "9999px",
     "&:hover": {
-      backgroundColor: "#555",
+      backgroundColor: "$primary",
     },
   },
 });

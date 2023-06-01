@@ -3,18 +3,17 @@ import { Domine, Mulish } from "next/font/google";
 import { globalStyles } from "../styles/global";
 import { getCssText } from "../styles";
 
-const domine = Domine({ 
+const domine = Domine({
   subsets: ["latin"],
-  weight: ["400", "700"] 
+  weight: ["400", "700"],
 });
 
-const mulish = Mulish({ 
+const mulish = Mulish({
   subsets: ["latin"],
-  weight: ["400", "700"] 
+  weight: ["400", "700"],
 });
 
-
-globalStyles()
+globalStyles();
 
 export const metadata = {
   title: "InfoMart",
@@ -30,10 +29,21 @@ export default function RootLayout({
   return (
     <html lang="pt">
       <head>
-        <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+        <style
+          id="stitches"
+          dangerouslySetInnerHTML={{ __html: getCssText() }}
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        ></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        ></link>
       </head>
       <body className={domine.className + mulish.className}>
-        <Header/>
+        <Header />
         {children}
       </body>
     </html>

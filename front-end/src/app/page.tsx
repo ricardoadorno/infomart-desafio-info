@@ -1,6 +1,7 @@
 import Categories from "@/components/Home/Categories";
 import Hero from "@/components/Home/Hero";
 import Suggestions from "@/components/Home/Suggestions";
+import { Container } from "@/styles/global";
 
 export default function Home() {
   return (
@@ -11,10 +12,3 @@ export default function Home() {
     </Container>
   );
 }
-
-import { styled } from "@/styles";
-
-export const Container = styled("div", {
-  maxWidth: "1000px",
-  margin: "0 auto",
-});
