@@ -5,11 +5,10 @@ export const HeroContainer = styled("div", {
   alignItems: "center",
   justifyContent: "space-between",
   height: "100vh",
-  padding: "0 1rem",
 
   hgroup: {
     maxWidth: "50%",
-    fontWeight: "400",
+    fontWeight: "700",
     fontFamily: "$serif",
   },
 
@@ -22,8 +21,21 @@ export const HeroContainer = styled("div", {
   h4: {
     fontSize: "$h4",
   },
+
+  "@bp1": {
+    hgroup: {
+      maxWidth: "40%",
+    },
+  },
 });
 
 export const HeroImage = styled("img", {
-  height: "50vmin",
+  "@bp3": {
+    height: "400px",
+    width: "400px",
+  },
+
+  "@bp1": {
+    display: "none",
+  },
 });
