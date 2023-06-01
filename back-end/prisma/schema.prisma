@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+ provider = "mysql"
+ url =  env("DATABASE_URL")
+}
+
+model Product {
+  id String @id @default (uuid())
+  name String
+  price  Float
+  category String
+  description String
+  isFavorite Boolean
+  listId Int?
+  listProduct ListProduct?  @relation(fields: [listId], references: [id],onDelete: Cascade)
+}
+
+model ListProduct {
+  id       Int       @id @default(autoincrement())
+  name String
+  products Product[]
+}
+
+  

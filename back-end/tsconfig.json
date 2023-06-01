@@ -7,5 +7,6 @@
     "outDir": "dist",
     "strict": true,
     "sourceMap": true
-  }
+  },
+  "exclude": ["node_modules"]
 }
