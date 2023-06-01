@@ -1,4 +1,9 @@
 import { keyframes, styled } from "@/styles";
+import {
+  DialogOverlay,
+  DialogContent,
+  DialogClose,
+} from "@radix-ui/react-dialog";
 const contentShowAnimation = keyframes({
   "0%": {
     opacity: "0",
@@ -10,22 +15,6 @@ const contentShowAnimation = keyframes({
   },
 });
 
-import {
-  DialogOverlay,
-  DialogContent,
-  DialogClose,
-} from "@radix-ui/react-dialog";
-
-export const AddItemComponent = styled("div", {
-  h3: {
-    fontSize: "$h3",
-    color: "$black",
-    fontWeight: "700",
-    marginBottom: "1rem",
-    textAlign: "center",
-  },
-});
-
 export const CreateItem = styled("div", {
   backgroundColor: "$gray",
   width: "100%",
@@ -33,6 +22,8 @@ export const CreateItem = styled("div", {
 
   cursor: "pointer",
   display: "flex",
+  flex: "3",
+  margin: "1rem 0",
   gap: ".5rem",
   flexDirection: "column",
   justifyContent: "center",

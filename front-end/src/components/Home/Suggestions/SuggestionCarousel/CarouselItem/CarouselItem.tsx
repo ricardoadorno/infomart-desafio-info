@@ -13,8 +13,8 @@ export default function CarouselItem({ item }: { item: CarouselItemProps }) {
       <ItemImage draggable="false" src={item.imageUrl} alt="suggestion" />
       <ItemInfo>
         <p>{item.name}</p>
-        <span>{item.price}</span>
-        <small>Categoria: {item.category}</small>
+        <span>R$ {item.price}</span>
+        <small> Categoria: {item.category}</small>
       </ItemInfo>
       <button>+ Lista</button>
     </Item>

@@ -5,7 +5,6 @@ import {
   StyledDialogContent,
   StyledDialogClose,
   StyledImputGroup,
-  AddItemComponent,
   CreateItem,
 } from "./styles";
 import addItem from "@/assets/icons/add-item.png";
@@ -14,12 +13,10 @@ import closeButton from "@/assets/icons/close-button.png";
 export default () => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
-      <AddItemComponent>
-        <CreateItem>
-          <img src={addItem.src} alt="add-item" />
-          <small>Crie seu item</small>
-        </CreateItem>
-      </AddItemComponent>
+      <CreateItem>
+        <img src={addItem.src} alt="add-item" />
+        <small>Crie seu item</small>
+      </CreateItem>
     </Dialog.Trigger>
     <Dialog.Portal>
       <StyledDialogOverlay />

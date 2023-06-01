@@ -5,6 +5,7 @@ export const NewItemContainer = styled("div", {
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
+
   h3: {
     fontSize: "$h3",
     color: "$black",

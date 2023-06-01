@@ -4,7 +4,8 @@ export const HeroContainer = styled("div", {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  height: "100vh",
+  width: "100%",
+  margin: "8rem 0",
 
   hgroup: {
     maxWidth: "50%",
@@ -21,21 +22,9 @@ export const HeroContainer = styled("div", {
   h4: {
     fontSize: "$h4",
   },
-
-  "@bp1": {
-    hgroup: {
-      maxWidth: "40%",
-    },
-  },
 });
 
 export const HeroImage = styled("img", {
-  "@bp3": {
-    height: "400px",
-    width: "400px",
-  },
-
-  "@bp1": {
-    display: "none",
-  },
+  height: "auto",
+  width: "400px",
 });
