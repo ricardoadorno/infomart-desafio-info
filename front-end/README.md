@@ -28,5 +28,5 @@ npm run dev
 
 ## Bibliotecas Utilizadas
 
-- Next.js
-- Stitches
+- Next.js 13
+- Styled Components 6.0
