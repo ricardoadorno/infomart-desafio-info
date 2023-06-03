@@ -1,19 +1,9 @@
-import Header from "@/components/Header";
-import { Domine, Mulish } from "next/font/google";
-import { globalStyles } from "../styles/global";
-import { getCssText } from "../styles";
+"use client";
 
-const domine = Domine({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
-const mulish = Mulish({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
-globalStyles();
+import StyledComponentsRegistry from "@/lib/registry";
+import { theme } from "@/styles/theme";
+import { GlobalStyles } from "@/styles/global";
+import { ThemeProvider } from "styled-components";
 
 export const metadata = {
   title: "InfoMart",
@@ -27,17 +17,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt">
-      <head>
-        <style
-          id="stitches"
-          dangerouslySetInnerHTML={{ __html: getCssText() }}
-        />
-      </head>
-      <body className={domine.className + mulish.className}>
-        <Header />
-        {children}
-      </body>
-    </html>
+    <StyledComponentsRegistry>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <html lang="pt">
+          <head>
+            <link
+              href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+              rel="stylesheet"
+            />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Domine:wght@400;700&display=swap"
+              rel="stylesheet"
+            />
+          </head>
+          <body>{children}</body>
+        </html>
+      </ThemeProvider>
+    </StyledComponentsRegistry>
   );
 }

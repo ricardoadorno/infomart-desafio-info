@@ -1,5 +1,6 @@
+"use client";
+
 import { HeroContainer, HeroImage } from "./styles";
-import heroImage from "@/assets/images/hero-img.png";
 
 export default function Hero() {
   return (
@@ -11,7 +12,7 @@ export default function Hero() {
           rápida
         </h4>
       </hgroup>
-      <HeroImage src={heroImage.src} alt="hero" />
+      <HeroImage src={"/images/hero-img.png"} alt="hero" />
     </HeroContainer>
   );
 }

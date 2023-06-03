@@ -1,42 +1,33 @@
-import { globalCss, styled } from ".";
+import { createGlobalStyle } from "styled-components";
 
-export const globalStyles = globalCss({
-  "*": {
-    margin: 0,
-    padding: 0,
-    boxSizing: "border-box",
-  },
+export const GlobalStyles = createGlobalStyle`
 
-  body: {
-    backgroundColor: "$background",
-  },
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: ${({ theme }) => theme.colors.black};
+    background-color: ${({ theme }) => theme.colors.background};
+}
 
-  "body, input, button, textarea": {
-    fontFamily: "$sans",
-    fontSize: "1rem",
-    fontWeight: 700,
-  },
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
 
-  a: {
-    color: "inherit",
-    textDecoration: "none",
-  },
+body, input, button, textarea {
+    font-family: 'Mulish', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
 
-  li: {
-    listStyle: "none",
-  },
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-  button: {
-    backgroundColor: "$primary",
-    color: "#fff",
-    padding: "12px 16px",
-    border: "none",
-    borderRadius: "10px",
-    cursor: "pointer",
-  },
-});
-
-export const Container = styled("div", {
-  maxWidth: "1000px",
-  margin: "0 auto",
-});
+* {
+    box-sizing: border-box;
+}
+`;
