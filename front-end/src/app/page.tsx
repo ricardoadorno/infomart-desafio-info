@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <main className="container">
       <Hero />
-      {/* <Suggestions /> */}
-      {/* <Categories /> */}
+      <Suggestions />
+      <Categories />
     </main>
   );
 }

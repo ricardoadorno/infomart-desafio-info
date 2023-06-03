@@ -2,12 +2,26 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 
-body {
+* {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+}
+
+body {
     color: ${({ theme }) => theme.colors.black};
     background-color: ${({ theme }) => theme.colors.background};
+}
+
+
+
+button {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.white};
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
 }
 
 .container {
@@ -27,7 +41,5 @@ a {
     text-decoration: none;
 }
 
-* {
-    box-sizing: border-box;
-}
+
 `;

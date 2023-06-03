@@ -1,4 +1,5 @@
-import { Item, ItemImage, ItemInfo } from "./styles";
+import Image from "next/image";
+import { Item, ItemInfo } from "./styles";
 
 interface CarouselItemProps {
   name: string;
@@ -10,7 +11,13 @@ interface CarouselItemProps {
 export default function CarouselItem({ item }: { item: CarouselItemProps }) {
   return (
     <Item>
-      <ItemImage draggable="false" src={item.imageUrl} alt="suggestion" />
+      <Image
+        draggable="false"
+        src={item.imageUrl}
+        width={245}
+        height={208}
+        alt={item.name}
+      />
       <ItemInfo>
         <p>{item.name}</p>
         <span>R$ {item.price}</span>

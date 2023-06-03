@@ -7,6 +7,7 @@ export const theme = {
     gray: "#DEDEDE",
     grayAlt: "#787878",
     placeholder: "#9E9E9E",
+    white: "#F6F6EF",
   },
   fonts: {
     sans: "Mulish, sans-serif",

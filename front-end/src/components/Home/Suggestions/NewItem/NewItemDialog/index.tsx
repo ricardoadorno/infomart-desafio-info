@@ -7,14 +7,18 @@ import {
   StyledImputGroup,
   CreateItem,
 } from "./styles";
-import addItem from "@/assets/icons/add-item.png";
-import closeButton from "@/assets/icons/close-button.png";
+import Image from "next/image";
 
 export default () => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
       <CreateItem>
-        <img src={addItem.src} alt="add-item" />
+        <Image
+          src="/icons/add-item.png"
+          width={84}
+          height={84}
+          alt="Adicionar item"
+        />
         <small>Crie seu item</small>
       </CreateItem>
     </Dialog.Trigger>
@@ -23,9 +27,19 @@ export default () => (
       <StyledDialogContent>
         <header>
           <StyledDialogClose>
-            <img src={closeButton.src} alt="Fechar" />
+            <Image
+              src="/icons/close-button.png"
+              width={33}
+              height={33}
+              alt="Fechar"
+            />
           </StyledDialogClose>
-          <img src={addItem.src} alt="Adicionar item" />
+          <Image
+            src="/icons/add-item.png"
+            width={42}
+            height={42}
+            alt="Adicionar item"
+          />
           <p>Adicionar uma imagem</p>
         </header>
 

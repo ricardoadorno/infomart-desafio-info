@@ -1,14 +1,18 @@
-import { styled } from "@/styles";
+"use client";
 
-export const NewItemContainer = styled("div", {
-  height: "80%",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
+import styled from "styled-components";
 
-  h3: {
-    fontSize: "$h3",
-    color: "$black",
-    alignSelf: "flex-start",
-  },
-});
+export const NewItemContainer = styled.div`
+  flex: 1;
+
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h3 {
+    text-align: center;
+    font-size: ${(props) => props.theme.fontSizes.h4};
+    color: ${(props) => props.theme.colors.black};
+  }
+`;

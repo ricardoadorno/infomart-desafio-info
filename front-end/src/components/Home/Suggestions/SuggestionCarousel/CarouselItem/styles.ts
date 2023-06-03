@@ -1,37 +1,40 @@
-import { styled } from "@/styles";
+"use client";
 
-export const Item = styled("div", {
-  flexShrink: "0",
-  flexBasis: "200px",
-  display: "flex",
-  flexDirection: "column",
-  gap: "1rem",
-});
+import styled from "styled-components";
 
-export const ItemImage = styled("img", {
-  width: "100%",
-  height: "auto",
-  borderRadius: "10px",
-});
+export const Item = styled.div`
+  flex-shrink: 0;
+  flex-basis: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
-export const ItemInfo = styled("div", {
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  rowGap: ".5rem",
-  marginBottom: ".5rem",
-  fontWeight: "700",
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+`;
 
-  p: {
-    color: "$black",
-  },
+export const ItemInfo = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
 
-  span: {
-    textAlign: "right",
-    color: "$primary",
-  },
+  p {
+    font-family: ${(props) => props.theme.fonts.serif};
+    color: ${(props) => props.theme.colors.black};
+  }
 
-  small: {
-    color: "$placeholder",
-    gridColumn: "1 / span 2",
-  },
-});
+  span {
+    text-align: right;
+    color: ${(props) => props.theme.colors.primary};
+  }
+
+  small {
+    color: ${(props) => props.theme.colors.placeholder};
+    grid-column: 1 / span 2;
+  }
+`;

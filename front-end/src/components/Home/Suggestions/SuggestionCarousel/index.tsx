@@ -6,19 +6,19 @@ const itemsPropsPlaceholder = [
     name: "Item 1",
     price: 49.99,
     category: "Fruta",
-    imageUrl: "https:/placehold.it/200x200",
+    imageUrl: "/images/placeholder.png",
   },
   {
     name: "Item 1",
     price: 49.99,
     category: "Fruta",
-    imageUrl: "https:/placehold.it/200x200",
+    imageUrl: "/images/placeholder.png",
   },
   {
     name: "Item 1",
     price: 49.99,
     category: "Fruta",
-    imageUrl: "https:/placehold.it/200x200",
+    imageUrl: "/images/placeholder.png",
   },
 ];
 

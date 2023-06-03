@@ -1,32 +1,36 @@
-import { styled } from "@/styles";
+"use client";
 
-export const CarouselContainer = styled("div", {
-  h3: {
-    fontSize: "$h3",
-    color: "$black",
-  },
-});
+import styled from "styled-components";
 
-export const Carousel = styled("div", {
-  marginTop: ".6rem",
+export const CarouselContainer = styled.div`
+  flex: 1;
+  h3 {
+    font-size: ${(props) => props.theme.fontSizes.h4};
+    color: ${(props) => props.theme.colors.black};
 
-  display: "flex",
-  height: "347px",
-  overflowX: "auto",
-  justifyContent: "space-between",
-  gap: "1rem",
+    @media ${(props) => props.theme.media.sm} {
+      text-align: center;
+    }
+  }
+`;
 
-  scrollbarWidth: "thin",
+export const Carousel = styled.div`
+  margin-top: 0.6rem;
+  align-items: center;
+  display: flex;
+  height: 347px;
+  overflow-x: auto;
+  justify-content: space-between;
+  gap: 1rem;
+  scrollbar-width: thin;
 
-  "&::-webkit-scrollbar": {
-    marginTop: "1rem",
-    height: "8px",
-  },
-  "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "$primary",
-    borderRadius: "9999px",
-    "&:hover": {
-      backgroundColor: "$primary",
-    },
-  },
-});
+  &::-webkit-scrollbar {
+    margin-top: 1rem;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.colors.primary};
+    border-radius: 9999px;
+  }
+`;
