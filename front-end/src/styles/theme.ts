@@ -28,9 +28,9 @@ export const theme = {
     smallMobile: "0.5rem",
   },
   media: {
-    xm: "(min-width: 640px)",
-    sm: "(min-width: 768px)",
-    md: "(min-width: 1024px)",
-    lg: "(min-width: 1280px)",
+    xm: "(max-width: 640px)",
+    sm: "(max-width: 768px)",
+    md: "(max-width: 1024px)",
+    lg: "(max-width: 1280px)",
   },
 };
