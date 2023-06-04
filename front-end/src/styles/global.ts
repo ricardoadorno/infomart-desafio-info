@@ -26,7 +26,7 @@ button {
 
 .container {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 4rem auto;
     padding: 0 1rem;
 }
 

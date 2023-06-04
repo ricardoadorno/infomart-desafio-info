@@ -46,15 +46,6 @@ const itemsPropsPlaceholder = [
 export default function SuggestionCarousel() {
   const [currentCarouselItem, setCurrentCarouselItem] = useState(0);
 
-  function findCarouselSelectorSize(arr: any[]) {
-    const numberOfItems =
-      arr.length % 2 === 0 ? arr.length / 2 : arr.length / 2 + 0.5;
-
-    const size = new Array(numberOfItems).fill(0);
-
-    return size;
-  }
-
   return (
     <CarouselContainer>
       <h3>Algumas sugestões</h3>
@@ -71,12 +62,12 @@ export default function SuggestionCarousel() {
             <CarouselItemMobile key={index} item={itemPropsPlaceholder} />
           ))}
         <section>
-          {findCarouselSelectorSize(itemsPropsPlaceholder).map((_, index) => (
+          {itemsPropsPlaceholder.map((_, index) => (
             <SelectorCarouselMobileElement
               key={index}
+              className={index === currentCarouselItem ? "active" : ""}
               onClick={() => setCurrentCarouselItem(index)}
-              className={currentCarouselItem === index ? "active" : ""}
-            />
+            ></SelectorCarouselMobileElement>
           ))}
         </section>
       </CarouselMobile>

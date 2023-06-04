@@ -4,6 +4,7 @@ import StyledComponentsRegistry from "@/lib/registry";
 import { theme } from "@/styles/theme";
 import { GlobalStyles } from "@/styles/global";
 import { ThemeProvider } from "styled-components";
+import Header from "@/components/Header";
 
 export const metadata = {
   title: "InfoMart",
@@ -31,7 +32,10 @@ export default function RootLayout({
               rel="stylesheet"
             />
           </head>
-          <body>{children}</body>
+          <body>
+            {/* <Header /> */}
+            {children}
+          </body>
         </html>
       </ThemeProvider>
     </StyledComponentsRegistry>

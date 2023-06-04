@@ -11,7 +11,13 @@ export default function Hero() {
           rápida
         </h4>
       </hgroup>
-      <Image src={"/images/hero-img.png"} width={500} height={500} alt="hero" />
+      <Image
+        priority
+        src={"/images/hero-img.png"}
+        width={500}
+        height={500}
+        alt="hero"
+      />
     </HeroContainer>
   );
 }
