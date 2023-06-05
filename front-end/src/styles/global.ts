@@ -3,31 +3,18 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 
 * {
-    box-sizing: border-box;
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-    color: ${({ theme }) => theme.colors.black};
     background-color: ${({ theme }) => theme.colors.background};
 }
 
-
-
-button {
-    cursor: pointer;
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.white};
-    padding: 0.5rem 1rem;
+input, button{
     border: none;
-    border-radius: 10px;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 4rem auto;
-    padding: 0 1rem;
+    outline: none;
 }
 
 body, input, button, textarea {
@@ -41,5 +28,40 @@ a {
     text-decoration: none;
 }
 
+.h1{
+    font-size: ${({ theme }) => theme.fontSizes.h1};
+}
+.h2{
+    font-size: ${({ theme }) => theme.fontSizes.h2};
+}
+.h3{
+    font-size: ${({ theme }) => theme.fontSizes.h3};
+}
+.h4{
+    font-size: ${({ theme }) => theme.fontSizes.h4};
+}
+.p{
+    font-size: ${({ theme }) => theme.fontSizes.p};
+}
+.small{
+    font-size: ${({ theme }) => theme.fontSizes.small};
+}
 
+@media ${(props) => props.theme.media.xm} {
+    .h1{
+        font-size: ${({ theme }) => theme.fontSizes.h1Mobile};
+    }
+    .h2{
+        font-size: ${({ theme }) => theme.fontSizes.h2Mobile};
+    }
+    .h3{
+        font-size: ${({ theme }) => theme.fontSizes.h3Mobile};
+    }
+    .h4{
+        font-size: ${({ theme }) => theme.fontSizes.h4Mobile};
+    }
+    .p{
+        font-size: ${({ theme }) => theme.fontSizes.pMobile};
+    }
+    }
 `;
