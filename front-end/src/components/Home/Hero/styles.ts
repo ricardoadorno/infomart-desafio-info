@@ -7,7 +7,7 @@ export const HeroContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin: 8rem 0;
+  margin: 2rem 0;
 
   hgroup {
     max-width: 50%;

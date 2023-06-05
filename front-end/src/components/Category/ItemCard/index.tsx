@@ -1,4 +1,5 @@
-import { Item, ItemContent } from "./styles";
+import EditDialog from "../EditDialog";
+import { ButtonGroup, Item, ItemContent } from "./styles";
 import Image from "next/image";
 
 interface ItemCardProps {
@@ -22,7 +23,11 @@ export default function ItemCard(ItemPlaceholder: ItemCardProps) {
           <h2>{ItemPlaceholder.name}</h2>
           <span>R$ {ItemPlaceholder.price}</span>
         </div>
-        <button>Adicionar</button>
+        <ButtonGroup>
+          <button>Adicionar</button>
+          <EditDialog />
+          <button>Excluir</button>
+        </ButtonGroup>
       </ItemContent>
     </Item>
   );

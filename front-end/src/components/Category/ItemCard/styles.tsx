@@ -33,3 +33,14 @@ export const ItemContent = styled.div`
     gap: 1rem;
   }
 `;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+
+  @media ${(props) => props.theme.media.sm} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
