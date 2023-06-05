@@ -41,6 +41,7 @@ export default () => (
             alt="Adicionar item"
           />
           <p>Adicionar uma imagem</p>
+          <input name="nome" type="text" placeholder="Insira a URL" />
         </header>
 
         <section>

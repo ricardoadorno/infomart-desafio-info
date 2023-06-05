@@ -8,6 +8,14 @@ export const Item = styled.div`
   margin: 1.5rem 0;
   padding: 1rem;
   border-top: 2px solid ${(props) => props.theme.colors.primary};
+
+  @media ${(props) => props.theme.media.sm} {
+    flex-direction: column;
+
+    img {
+      align-self: center;
+    }
+  }
 `;
 
 export const ItemContent = styled.div`
@@ -19,5 +27,9 @@ export const ItemContent = styled.div`
     color: ${(props) => props.theme.colors.primary};
     font-weight: bold;
     margin-top: 4rem;
+  }
+
+  @media ${(props) => props.theme.media.sm} {
+    gap: 1rem;
   }
 `;

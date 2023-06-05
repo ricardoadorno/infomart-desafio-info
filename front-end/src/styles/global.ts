@@ -24,6 +24,18 @@ button {
     border-radius: 10px;
 }
 
+input {
+    background: ${(props) => props.theme.colors.gray};
+    border-radius: 36px;
+    border: none;
+    padding: 10px;
+    width: 100%;
+
+    &::placeholder {
+      color: ${(props) => props.theme.colors.placeholder};
+    }
+}
+
 .container {
     max-width: 1000px;
     margin: 4rem auto;

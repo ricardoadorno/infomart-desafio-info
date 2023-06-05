@@ -1,4 +1,4 @@
-import ItemCard from "./ItemCard/ItemCard";
+import ItemCard from "../../../components/Category/ItemCard/ItemCard";
 
 interface CategoryProps {
   params: { category: string };

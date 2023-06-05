@@ -88,16 +88,6 @@ export const StyledImputGroup = styled.div`
   flex-direction: column;
   gap: 0.3rem;
 
-  input {
-    background: ${(props) => props.theme.colors.gray};
-    border-radius: 36px;
-    border: none;
-    padding: 10px;
-    width: 100%;
-
-    &::placeholder {
-      color: ${(props) => props.theme.colors.placeholder};
-    }
   }
 `;
 
