@@ -14,12 +14,12 @@ export class ProductController {
     async getProducts(req: Request, res: Response, next: NextFunction) {
 
         try {
-            const { name = '', price = undefined, category = '', orderByClause = 'createdAt', orderBy = 'asc', pageSize = 25, page = 1 }: TypeQueryGetProducts = req.query;
+            const { name, price, category, orderByClause, orderBy, pageSize, page }: TypeQueryGetProducts = req.query;
 
             if (price != undefined && isNaN(price)) {
                 throw new BusinessExceptions("Erro no parametro price!", "InvalidInput", 422);
             }
-            if ((page != undefined) && isNaN(page) || page < 1) {
+            if ((page != undefined) && isNaN(page) || (page != null && page < 1)) {
                 throw new BusinessExceptions("Erro no parametro page!", "InvalidInput", 422);
             }
             if (pageSize != undefined && isNaN(pageSize)) {
@@ -29,7 +29,9 @@ export class ProductController {
 
             const products = await this.productService.getProducts({ name, price, category, orderByClause, orderBy, page: page, pageSize: pageSize })
 
-            return res.status(200).json(products.map(product => new ProductDto(product.id, product.name, product.price, product.category, product.imageUrl, product.description)));
+
+
+            return res.status(200).json(products.map(product => new ProductDto(product.id, product.name, product.price, product.category.id, product.category.name, product.imageUrl, product.description)));
 
         } catch (error) {
             next(error);
@@ -46,7 +48,7 @@ export class ProductController {
             }
 
             const product = await this.productService.getProductById(id);
-            const productDto = new ProductDto(product.id, product.name, product.price, product.category, product.imageUrl, product.description);
+            const productDto = new ProductDto(product.id, product.name, product.price, product.category.id, product.category.name, product.imageUrl, product.description);
 
             return res.status(200).json(productDto);
 
@@ -74,11 +76,12 @@ export class ProductController {
             }
 
             const product = await this.productService.createProduct(createProductDto);
-            const productDto = new ProductDto(product.id, product.name, product.price, product.category, product.imageUrl, product.description);
+
+            const productDto = new ProductDto(product.id, product.name, product.price, product.category.id, product.category.name, product.imageUrl, product.description);
 
             return res.status(201).json(productDto);
 
-        } catch (error: any) {
+        } catch (error) {
             next(error);
         }
     }
@@ -96,13 +99,16 @@ export class ProductController {
                 req.body.description
             );
 
-      
+
+
             const errors = await validate(updateProductDto);
             if (errors.length) {
                 return res.status(422).json(errors);
             }
-            const productUpdate = await this.productService.patchProduct(id, updateProductDto)
-            return res.status(200).json(productUpdate);
+            const productUpdate = await this.productService.patchProduct(id, updateProductDto);
+            const newProduct = new ProductDto(productUpdate.id, productUpdate.name, productUpdate.price, productUpdate.category.id, productUpdate.category.name, productUpdate.imageUrl, productUpdate.description);
+            console.log(newProduct);
+            return res.status(200).json(newProduct);
 
         } catch (error) {
             next(error);

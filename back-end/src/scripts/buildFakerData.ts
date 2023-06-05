@@ -1,8 +1,11 @@
+import { CreateProductDto } from "../models/product/createProduct.dto";
+import { ProductRepository } from "../repositories/productRepository";
+
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-const data = [
+const arrayData = [
     {
         name: 'Sabonete',
         price: 2.5,
@@ -135,9 +138,14 @@ const data = [
 
 async function generateData() {
     try {
-        await prisma.product.createMany({
-            data,
-        });
+
+        const productRepository = new ProductRepository(prisma);
+        for (let data of arrayData) {
+
+            await productRepository.createProduct(data as CreateProductDto)
+
+        }
+
         console.log('Dados gerados e inseridos no banco de dados com sucesso!');
     } catch (error) {
         console.error('Erro ao gerar e inserir dados no banco de dados:', error);

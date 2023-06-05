@@ -1,5 +1,6 @@
-import { Product } from "@prisma/client";
+
 import { CreateProductDto } from "../../models/product/createProduct.dto";
+import { Product } from "prisma"
 import { TypeQueryGetProducts } from "../../repositories/interface/product.repository.interface";
 
 

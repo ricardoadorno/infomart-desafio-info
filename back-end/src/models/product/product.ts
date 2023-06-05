@@ -1,3 +1,4 @@
+import { Category } from "@prisma/client"
 
 
 export class Product {
@@ -5,9 +6,10 @@ export class Product {
     id: string
     name: string
     price: number
-    category: string
+    categoryId: string
+    category: Category
     imageUrl: string
-    description: String
+    description: string
     updatedAt: Date
     createAt: Date
     listId: string

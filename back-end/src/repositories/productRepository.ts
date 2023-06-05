@@ -9,13 +9,31 @@ export class ProductRepository implements IProductRepository {
 
   async createProduct(createProductDto: CreateProductDto) {
     try {
+
+      let category = await this.prismaClient.category.findUnique({
+        where: { name: createProductDto.category }
+      })
+
+      if (!category) {
+        category = await this.prismaClient.category.create({
+          data: {
+            name: createProductDto.category
+          }
+        })
+      }
+
+
       const product = await this.prismaClient.product.create({
         data: {
-          ...createProductDto
-
+          ...createProductDto,
+          category: {
+            connect: { id: category.id }
+          }
+        },
+        include: {
+          category: true
         }
       });
-
 
       return product;
     } catch (error: any) {
@@ -29,8 +47,8 @@ export class ProductRepository implements IProductRepository {
 
   }
 
-  async getProducts(data: TypeQueryGetProducts): Promise<Product[]> {
-    const { name, price, category, orderByClause, orderBy, page = 1, pageSize = 25 } = data;
+  async getProducts(data: TypeQueryGetProducts) {
+    const { name, price, category, orderByClause = "createdAt", orderBy = "asc", page = 1, pageSize = 25 } = data;
     const filters: any = {};
     if (name) {
       filters.name = { contains: name };
@@ -38,20 +56,27 @@ export class ProductRepository implements IProductRepository {
     if (price) {
       filters.price = parseFloat(price.toString());
     }
+
     if (category) {
-      filters.category = { contains: category };
+      const categoryEntity = await this.prismaClient.category.findUnique({
+        where: { name: category }
+      })
+      if (!!categoryEntity) {
+        filters.categoryId = { contains: categoryEntity.id }
+      }   
+
     }
 
     let orderByQuery;
-    if (orderBy && orderByClause) {
-      const validOrderByFields = ['name', 'category', 'createdAt'];
-      if (validOrderByFields.includes(orderByClause)) {
-        const orderByDirection = orderBy === 'asc' ? 'asc' : 'desc';
-        orderByQuery = { [orderByClause]: orderByDirection };
-      } else {
-        throw new BusinessExceptions("Ordenação inválida.", "InvalidOrder", 422);
-      }
+
+    const validOrderByFields = ['name', 'createdAt'];
+    if (validOrderByFields.includes(orderByClause)) {
+      const orderByDirection = orderBy === 'asc' ? 'asc' : 'desc';
+      orderByQuery = { [orderByClause]: orderByDirection };
+    } else {
+      throw new BusinessExceptions("Ordenação inválida.", "InvalidOrder", 422);
     }
+
 
     let pageValue = parseInt(page.toString());
     let pageSizeValue = parseInt(pageSize.toString());
@@ -61,24 +86,61 @@ export class ProductRepository implements IProductRepository {
       orderBy: orderByQuery,
       skip: (pageValue - 1) * pageSizeValue,
       take: pageSizeValue,
+      include: {
+        category: true,
+      },
     });
 
     return products;
   }
 
+
   async getProductById(productId: string): Promise<Product | null> {
     return await this.prismaClient.product.findUnique({
       where: { id: productId },
+      include: {
+        category: true,
+      },
     });
   }
 
-  async patchProduct(productId: string, updateProductDto: Partial<CreateProductDto>): Promise<Product> {
+  async patchProduct(productId: string, updateProductDto: Partial<CreateProductDto>) {
 
     try {
+
+      let category: any;
+
+      if (updateProductDto.category != null) {
+        category = await this.prismaClient.category.findUnique({
+          where: { name: updateProductDto.category }
+        })
+
+        if (!category) {
+          category = await this.prismaClient.category.create({
+            data: {
+              name: updateProductDto.category
+            }
+          })
+        }
+      }
+
       return await this.prismaClient.product.update({
-        data: updateProductDto,
-        where: { id: productId }
-      })
+        data: {
+          ...updateProductDto,
+          category: category
+            ? {
+              connect: {
+                id: category.id,
+              },
+            }
+            : undefined,
+        },
+        where: { id: productId },
+        include: {
+          category: true
+        }
+      });
+
     } catch (error: any) {
       if (error?.code == "P2025") {
         throw new BusinessExceptions("Produto não encontrado.", "ProductNotFound", 404);
@@ -89,7 +151,6 @@ export class ProductRepository implements IProductRepository {
       throw error
     }
   }
-
 
   async deleteProduct(productId: string): Promise<void> {
     try {
@@ -105,6 +166,5 @@ export class ProductRepository implements IProductRepository {
       throw error
     }
   }
-
 
 }

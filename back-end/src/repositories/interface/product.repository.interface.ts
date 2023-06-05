@@ -1,12 +1,13 @@
-import { Product } from "@prisma/client";
+
 import { CreateProductDto } from "../../models/product/createProduct.dto";
+import { Product } from "prisma";
 
 
 export type TypeQueryGetProducts = {
     name?: string,
     price?: number,
-    category?: string,
-    orderByClause?: "name" | "category" | "createdAt",
+    category?: string
+    orderByClause?: "name" | "createdAt",
     orderBy?: "asc" | "dsc",
     pageSize?: number,
     page?: number

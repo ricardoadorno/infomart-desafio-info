@@ -38,8 +38,7 @@ export const swaggerDocument = {
               type: "number",
             },
             description: "Filtrar produtos pelo preço",
-          },
-          {
+          }, {
             in: "query",
             name: "category",
             schema: {
@@ -52,7 +51,7 @@ export const swaggerDocument = {
             name: "orderByClause",
             schema: {
               type: "string",
-              enum: ["name", "category"],
+              enum: ["name", "createdAt"],
               default: "createdAt",
             },
             description: "Ordenar produtos por uma cláusula específica, se nenhum orderByClause for passado ele ordena por data de criação.",
@@ -235,7 +234,9 @@ export const swaggerDocument = {
           },
         },
       },
-    },
+    }, "/products/categories{id}": {
+
+    }
 
   },
 
