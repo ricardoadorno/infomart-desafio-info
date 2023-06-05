@@ -1,10 +1,13 @@
-import Link from "next/link";
+import Categories from "@/components/Home/Categories";
+import Hero from "@/components/Home/Hero";
+import Suggestions from "@/components/Home/Suggestions";
 
 export default function Home() {
   return (
-    <>
-      <main>Hello World</main>
-      <Link href="/categories/padaria">Padaria</Link>
-    </>
+    <main className="container">
+      <Hero />
+      <Suggestions />
+      <Categories />
+    </main>
   );
 }
