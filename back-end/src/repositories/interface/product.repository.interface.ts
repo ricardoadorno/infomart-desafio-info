@@ -19,6 +19,7 @@ export interface IProductRepository {
     getProducts(data: TypeQueryGetProducts): Promise<Product[]>
     createProduct(createProductDto: CreateProductDto): Promise<Product>
     patchProduct(productId: string, updateProductDto: Partial<CreateProductDto>): Promise<Product>
-    addProductList(productId: string): Promise<unknown>
     deleteProduct(productId: string): Promise<void>
+    addProductList(productId: string): Promise<unknown>
+    deleteProductList(productId: string): Promise<unknown>
 }

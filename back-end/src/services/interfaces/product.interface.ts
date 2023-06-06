@@ -12,4 +12,5 @@ export interface IProductService {
     patchProduct(productId: string, updateProductDto: Partial<CreateProductDto>): Promise<Product>
     deleteProduct(productId: string): Promise<void>
     addProductList(productId: string): Promise<ListProducts>
+    deleteProductList(relationId: string): Promise<ListProducts>
 }

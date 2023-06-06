@@ -181,7 +181,7 @@ export class ProductRepository implements IProductRepository {
         });
       }
 
-      const productOnList = await this.prismaClient.productOnList.create({
+      await this.prismaClient.productOnList.create({
         data: {
           listId: list.id,
           productId: productId
@@ -203,20 +203,71 @@ export class ProductRepository implements IProductRepository {
         }
       });
 
-
-
-      return { id: updatedList?.id, name: updatedList?.name, products: updatedList?.products.map(product => product.product) };
-
+      return {
+        id: updatedList?.id, name: updatedList?.name, products: updatedList?.products.map(product => {
+          return { ...product.product, idRelation: product.id }
+        })
+      };
 
     } catch (error: any) {
-     
+
       if (error?.code == "P2003" && error.meta.field_name == "productId") {
         throw new BusinessExceptions("Produto não encontrado!", "ProductNotFound", 404);
       }
-      
+
       throw error
     }
 
+  }
+
+  async deleteProductList(idRelation: string) {
+    try {
+      let list = await this.prismaClient.listProduct.findFirst();
+
+      if (!list) {
+        list = await this.prismaClient.listProduct.create({
+          data: {
+            name: "Lista de Favoritos",
+          }
+        });
+      }
+
+      await this.prismaClient.productOnList.delete({
+        where: { id: idRelation }
+      });
+
+      const updatedList = await this.prismaClient.listProduct.findUnique({
+        where: { id: list.id },
+        include: {
+          products: {
+            include: {
+              product: {
+                include: {
+                  category: true
+                }
+              }
+            }
+          }
+        }
+      });
+
+
+
+      return {
+        id: updatedList?.id, name: updatedList?.name, products: updatedList?.products.map(product => {
+          return { ...product.product, idRelation: product.id }
+        })
+      }
+
+
+    } catch (error: any) {
+
+      if (error?.code == "P2025") {
+        throw new BusinessExceptions("Produto não encontrado!", "ProductNotFound", 404);
+      }
+
+      throw error
+    }
   }
 
   async getProductsList() {

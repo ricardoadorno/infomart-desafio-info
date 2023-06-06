@@ -237,7 +237,7 @@ export const swaggerDocument = {
     },
     "/products/list/{id}": {
       post: {
-        tags: ["List", "Products"],
+        tags: ["Products"],
         summary: "Adicionar um produto na lista de favoritos",
         parameters: [
           {
@@ -266,7 +266,7 @@ export const swaggerDocument = {
         },
       },
       delete: {
-        tags: ["List", "Products"],
+        tags: ["Products"],
         summary: "Exclui um produto na lista de favoritos",
         parameters: [
           {

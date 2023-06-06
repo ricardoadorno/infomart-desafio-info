@@ -38,10 +38,16 @@ export class ProductService implements IProductService {
         return await this.productRepository.deleteProduct(productId);
     }
 
+
+
     async addProductList(productId: string): Promise<ListProducts> {
-        const list = await this.productRepository.addProductList(productId);
-        return list as ListProducts;
+        return await this.productRepository.addProductList(productId) as ListProducts;
     }
+
+    async deleteProductList(relationId: string): Promise<ListProducts> {
+        return await this.productRepository.deleteProductList(relationId) as ListProducts;
+    }
+
 
 
 }

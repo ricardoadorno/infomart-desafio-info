@@ -156,4 +156,25 @@ export class ProductController {
     }
 
 
+    async deleteProductList(req: Request, res: Response, next: NextFunction) {
+
+        try {
+
+            const { id } = req.params;
+
+            if (!id) {
+                throw new BusinessExceptions("Erro no parametro id!", "InvalidId", 400);
+            }
+
+            const listUpdate = await this.productService.deleteProductList(id);
+
+            return res.status(200).json(new ListProductsDto(listUpdate.id, listUpdate.name, listUpdate.products));
+
+        } catch (error) {
+            next(error);
+        }
+    }
+
+
+
 }

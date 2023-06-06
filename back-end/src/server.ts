@@ -33,7 +33,7 @@ app.post("/products", productController.postProduct.bind(productController));
 app.patch("/products/:id", productController.patchProduct.bind(productController));
 app.delete("/products/:id", productController.deleteProduct.bind(productController));
 app.post("/products/list/:id", productController.postProductList.bind(productController));
-
+app.delete("/products/list/:id", productController.deleteProductList.bind(productController));
 
 app.use(ErrorMiddleware);
 
