@@ -234,9 +234,67 @@ export const swaggerDocument = {
           },
         },
       },
-    }, "/products/categories{id}": {
-
-    }
+    },
+    "/products/list/{id}": {
+      post: {
+        tags: ["List", "Products"],
+        summary: "Adicionar um produto na lista de favoritos",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            description: "ID do produto a ser adicionado",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "Produto adicionado com sucesso",
+          },
+          400: {
+            description: "Solicitação inválida",
+          },
+          404: {
+            description: "Produto não encontrado",
+          },
+          500: {
+            description: "Erro interno do servidor",
+          },
+        },
+      },
+      delete: {
+        tags: ["List", "Products"],
+        summary: "Exclui um produto na lista de favoritos",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            description: "ID do produto a ser Excluído",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "Produto excluído com sucesso",
+          },
+          400: {
+            description: "Solicitação inválida",
+          },
+          404: {
+            description: "Produto não encontrado",
+          },
+          500: {
+            description: "Erro interno do servidor",
+          },
+        },
+      },
+    },
 
   },
 

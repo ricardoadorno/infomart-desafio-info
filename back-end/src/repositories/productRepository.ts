@@ -63,7 +63,7 @@ export class ProductRepository implements IProductRepository {
       })
       if (!!categoryEntity) {
         filters.categoryId = { contains: categoryEntity.id }
-      }   
+      }
 
     }
 
@@ -165,6 +165,86 @@ export class ProductRepository implements IProductRepository {
       }
       throw error
     }
+  }
+
+
+  async addProductList(productId: string) {
+
+    try {
+      let list = await this.prismaClient.listProduct.findFirst();
+
+      if (!list) {
+        list = await this.prismaClient.listProduct.create({
+          data: {
+            name: "Lista de Favoritos",
+          }
+        });
+      }
+
+      const productOnList = await this.prismaClient.productOnList.create({
+        data: {
+          listId: list.id,
+          productId: productId
+        }
+      });
+
+      const updatedList = await this.prismaClient.listProduct.findUnique({
+        where: { id: list.id },
+        include: {
+          products: {
+            include: {
+              product: {
+                include: {
+                  category: true
+                }
+              }
+            }
+          }
+        }
+      });
+
+
+
+      return { id: updatedList?.id, name: updatedList?.name, products: updatedList?.products.map(product => product.product) };
+
+
+    } catch (error: any) {
+     
+      if (error?.code == "P2003" && error.meta.field_name == "productId") {
+        throw new BusinessExceptions("Produto não encontrado!", "ProductNotFound", 404);
+      }
+      
+      throw error
+    }
+
+  }
+
+  async getProductsList() {
+
+    let list = await this.prismaClient.listProduct.findFirst();
+
+    if (!list) {
+      list = await this.prismaClient.listProduct.create({
+        data: {
+          name: "",
+        }
+      })
+    }
+
+    return await this.prismaClient.listProduct.findUnique({
+      where: { id: list.id },
+      include: {
+        products: {
+          include: {
+            product: {
+              include: {
+                category: true,
+              },
+            },
+          },
+        },
+      },
+    });
   }
 
 }

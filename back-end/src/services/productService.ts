@@ -3,6 +3,7 @@ import { IProductService } from "./interfaces/product.interface";
 import { CreateProductDto } from "../models/product/createProduct.dto";
 import { BusinessExceptions } from "../exceptions/BusinessExceptions";
 import { Product } from "@prisma/client";
+import { ListProducts } from "../models/listProducts/listProduct";
 
 export class ProductService implements IProductService {
     constructor(private productRepository: IProductRepository) { }
@@ -35,6 +36,11 @@ export class ProductService implements IProductService {
 
     async deleteProduct(productId: string): Promise<void> {
         return await this.productRepository.deleteProduct(productId);
+    }
+
+    async addProductList(productId: string): Promise<ListProducts> {
+        const list = await this.productRepository.addProductList(productId);
+        return list as ListProducts;
     }
 
 

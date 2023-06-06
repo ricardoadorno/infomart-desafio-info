@@ -6,6 +6,8 @@ import { ProductDto } from "../models/product/product.dto";
 import { TypeQueryGetProducts } from "../repositories/interface/product.repository.interface";
 import { BusinessExceptions } from "../exceptions/BusinessExceptions";
 import { UpdateProductDto } from "../models/product/updateProduct.dto";
+import { ListProduct } from "@prisma/client";
+import { ListProductsDto } from "../models/listProducts/listProduct.dto";
 
 export class ProductController {
 
@@ -31,7 +33,7 @@ export class ProductController {
 
 
 
-            return res.status(200).json(products.map(product => new ProductDto(product.id, product.name, product.price, product.category.id, product.category.name, product.imageUrl, product.description)));
+            return res.status(200).json(products.map(product => new ProductDto(product.id, product.name, product.price, product?.category?.id, product?.category?.name, product.imageUrl, product.description)));
 
         } catch (error) {
             next(error);
@@ -125,12 +127,33 @@ export class ProductController {
             if (!id) {
                 throw new BusinessExceptions("Erro no parametro id!", "InvalidId", 400);
             }
-            await this.productService.deleteProduct(id);
+            const listProducts = await this.productService.deleteProduct(id);
 
-            return res.status(204).send();
+            return res.status(200).json(listProducts);
 
         } catch (error) {
             next(error);
         }
     }
+
+    async postProductList(req: Request, res: Response, next: NextFunction) {
+
+        try {
+
+            const { id } = req.params;
+
+            if (!id) {
+                throw new BusinessExceptions("Erro no parametro id!", "InvalidId", 400);
+            }
+            const listUpdate = await this.productService.addProductList(id);
+
+
+            return res.status(200).json(new ListProductsDto(listUpdate.id, listUpdate.name, listUpdate.products));
+
+        } catch (error) {
+            next(error);
+        }
+    }
+
+
 }
