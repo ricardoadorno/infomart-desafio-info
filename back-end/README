@@ -25,7 +25,7 @@ yarn install
 # Crie um arquivo .env na raiz do projeto e defina as variáveis de ambiente necessárias que estão no arquivo env.example
 
 
-# Inicie o banco de dados MySQL usando o Docker Compose
+# Inicie a aplicação usando o Docker Compose
 docker-compose up -d
 
 ```
