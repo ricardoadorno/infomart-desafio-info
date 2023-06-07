@@ -14,5 +14,4 @@ export class CreateCategoryDto {
         this.name = name;
     }
 
-
 }

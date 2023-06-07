@@ -1,5 +1,5 @@
 
-import { ListProduct, ProductOnList } from "@prisma/client";
+import { Category, ListProduct, ProductOnList } from "@prisma/client";
 import { CreateProductDto } from "../../models/product/createProduct.dto";
 import { Product } from "prisma";
 
@@ -22,4 +22,6 @@ export interface IProductRepository {
     deleteProduct(productId: string): Promise<void>
     addProductList(productId: string): Promise<unknown>
     deleteProductList(productId: string): Promise<unknown>
+    getProductsList(): Promise<unknown>
+    getProductCategories(): Promise<Category[]>
 }

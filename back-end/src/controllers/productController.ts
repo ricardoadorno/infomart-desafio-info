@@ -8,6 +8,7 @@ import { BusinessExceptions } from "../exceptions/BusinessExceptions";
 import { UpdateProductDto } from "../models/product/updateProduct.dto";
 import { ListProduct } from "@prisma/client";
 import { ListProductsDto } from "../models/listProducts/listProduct.dto";
+import { CategoryDto } from "../models/category/category.dto";
 
 export class ProductController {
 
@@ -55,7 +56,6 @@ export class ProductController {
             return res.status(200).json(productDto);
 
         } catch (error) {
-            console.log(error)
             next(error);
         }
     }
@@ -109,7 +109,6 @@ export class ProductController {
             }
             const productUpdate = await this.productService.patchProduct(id, updateProductDto);
             const newProduct = new ProductDto(productUpdate.id, productUpdate.name, productUpdate.price, productUpdate.category.id, productUpdate.category.name, productUpdate.imageUrl, productUpdate.description);
-            console.log(newProduct);
             return res.status(200).json(newProduct);
 
         } catch (error) {
@@ -176,5 +175,26 @@ export class ProductController {
     }
 
 
+    async getProductList(req: Request, res: Response, next: NextFunction) {
+        try {
+            const listProducts = await this.productService.getProductList();
+
+            return res.status(200).json(new ListProductsDto(listProducts.id, listProducts.name, listProducts.products));
+
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async getProduCategories(req: Request, res: Response, next: NextFunction) {
+        try {
+            const listCategories = await this.productService.getProductCategories();
+
+            return res.status(200).json(listCategories.map(category => new CategoryDto(category.id, category.name)));
+
+        } catch (error) {
+            next(error);
+        }
+    }
 
 }

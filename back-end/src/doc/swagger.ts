@@ -108,7 +108,7 @@ export const swaggerDocument = {
           content: {
             "application/json": {
               schema: {
-                $ref: "#/components/schemas/Product",
+                $ref: "#/components/schemas/CreateProduct",
               },
             },
           },
@@ -185,7 +185,7 @@ export const swaggerDocument = {
           content: {
             "application/json": {
               schema: {
-                $ref: "#/components/schemas/Product",
+                $ref: "#/components/schemas/CreateProduct",
               },
             },
           },
@@ -235,7 +235,53 @@ export const swaggerDocument = {
         },
       },
     },
+    "/products/list": {
+      get: {
+        tags: ["Products"],
+        summary: "Obtém os produtos da lista de favoritos",
+        responses: {
+          200: {
+            description: "Lista de Produtos!",
+          },
+          400: {
+            description: "Solicitação inválida",
+          },
+          500: {
+            description: "Erro interno do servidor",
+          },
+        },
+      }
+    },
     "/products/list/{id}": {
+      delete: {
+        tags: ["Products"],
+        summary: "Exclui um item da lista de favoritos",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            description: "ID do item da lista a ser Excluído",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "Produto excluído com sucesso",
+          },
+          400: {
+            description: "Solicitação inválida",
+          },
+          404: {
+            description: "Produto não encontrado",
+          },
+          500: {
+            description: "Erro interno do servidor",
+          },
+        },
+      },
       post: {
         tags: ["Products"],
         summary: "Adicionar um produto na lista de favoritos",
@@ -265,29 +311,17 @@ export const swaggerDocument = {
           },
         },
       },
-      delete: {
-        tags: ["Products"],
-        summary: "Exclui um produto na lista de favoritos",
-        parameters: [
-          {
-            name: "id",
-            in: "path",
-            description: "ID do produto a ser Excluído",
-            required: true,
-            schema: {
-              type: "string",
-            },
-          },
-        ],
+    },
+    "/products/categories": {
+      get: {
+        tags: ["Category"],
+        summary: "Obtém as categorias",
         responses: {
           200: {
-            description: "Produto excluído com sucesso",
+            description: "Lista de categorias!",
           },
           400: {
             description: "Solicitação inválida",
-          },
-          404: {
-            description: "Produto não encontrado",
           },
           500: {
             description: "Erro interno do servidor",
@@ -300,7 +334,7 @@ export const swaggerDocument = {
 
   components: {
     schemas: {
-      Product: {
+      CreateProduct: {
         type: "object",
         properties: {
           name: {
@@ -321,28 +355,60 @@ export const swaggerDocument = {
           },
         },
       },
+      listFavorite: {
+        type: "object",
+        properties: {
+          id: {
+            type: "string",
+          },
+          name: {
+            type: "string",
+          },
+          products: {
+            type: "array",
+            items: {
+              $ref: "#/components/schemas/itemListFavorite",
+            }
+
+          }
+
+        }
+      },
+      itemListFavorite: {
+        type: "object",
+        properties: {
+          id: { type: "string" },
+          name: { type: "string" },
+          price: { type: "number" },
+          categoryId: { type: "string" },
+          categoryName: { type: "string" },
+          imageUrl: { type: "string" },
+          description: { type: "string" },
+          idRelation: { type: "string", description: "Esse é o id referente ao item da lista, quando precisar remover um item da lista esse ID é o que será usado no parametro" }
+        }
+      }
     },
-  },
-  businessExceptions: [
-    {
-      code: "InvalidInput",
-      message: "Entrada inválida",
-    },
-    {
-      code: "ProductNotFound",
-      message: "Produto não encontrado",
-    },
-    {
-      code: "InvalidOrder",
-      message: "Ordenação inválida",
-    },
-    {
-      code: "InvalidId",
-      message: "Erro no parâmetro Id!",
-    },
-    {
-      code: "DuplicateProductName",
-      message: "Já existe um produto com esse nome!",
-    },
-  ],
+    businessExceptions: [
+      {
+        code: "InvalidInput",
+        message: "Entrada inválida",
+      },
+      {
+        code: "ProductNotFound",
+        message: "Produto não encontrado",
+      },
+      {
+        code: "InvalidOrder",
+        message: "Ordenação inválida",
+      },
+      {
+        code: "InvalidId",
+        message: "Erro no parâmetro Id!",
+      },
+      {
+        code: "DuplicateProductName",
+        message: "Já existe um produto com esse nome!",
+      },
+    ],
+  }
 };

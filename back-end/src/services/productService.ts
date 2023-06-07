@@ -2,7 +2,7 @@ import { IProductRepository, TypeQueryGetProducts } from "../repositories/interf
 import { IProductService } from "./interfaces/product.interface";
 import { CreateProductDto } from "../models/product/createProduct.dto";
 import { BusinessExceptions } from "../exceptions/BusinessExceptions";
-import { Product } from "@prisma/client";
+import { Category, Product } from "@prisma/client";
 import { ListProducts } from "../models/listProducts/listProduct";
 
 export class ProductService implements IProductService {
@@ -48,6 +48,13 @@ export class ProductService implements IProductService {
         return await this.productRepository.deleteProductList(relationId) as ListProducts;
     }
 
+    async getProductList(): Promise<ListProducts> {
+        return await this.productRepository.getProductsList() as ListProducts;
+    }
+
+    async getProductCategories(): Promise<Category[]> {
+        return await this.productRepository.getProductCategories();
+    }
 
 
 }

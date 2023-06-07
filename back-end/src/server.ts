@@ -27,17 +27,18 @@ const productService = new ProductService(productRepository);
 const productController = new ProductController(productService);
 
 
+
+app.get("/products/list", productController.getProductList.bind(productController));
+app.post("/products/list/:id", productController.postProductList.bind(productController));
+app.delete("/products/list/:id", productController.deleteProductList.bind(productController));
+app.get("/products/categories", productController.getProduCategories.bind(productController));
 app.get("/products", productController.getProducts.bind(productController));
 app.get("/products/:id", productController.getProductById.bind(productController));
 app.post("/products", productController.postProduct.bind(productController));
 app.patch("/products/:id", productController.patchProduct.bind(productController));
 app.delete("/products/:id", productController.deleteProduct.bind(productController));
-app.post("/products/list/:id", productController.postProductList.bind(productController));
-app.delete("/products/list/:id", productController.deleteProductList.bind(productController));
 
 app.use(ErrorMiddleware);
-
-
 app.listen(process.env.NODE_LOCAL_PORT, () => {
 
   console.log(

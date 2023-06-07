@@ -3,6 +3,7 @@ import { CreateProductDto } from "../../models/product/createProduct.dto";
 import { Product } from "prisma"
 import { TypeQueryGetProducts } from "../../repositories/interface/product.repository.interface";
 import { ListProducts } from "../../models/listProducts/listProduct";
+import { Category } from "@prisma/client";
 
 
 export interface IProductService {
@@ -13,4 +14,6 @@ export interface IProductService {
     deleteProduct(productId: string): Promise<void>
     addProductList(productId: string): Promise<ListProducts>
     deleteProductList(relationId: string): Promise<ListProducts>
+    getProductList(): Promise<ListProducts>
+    getProductCategories(): Promise<Category[]>
 }

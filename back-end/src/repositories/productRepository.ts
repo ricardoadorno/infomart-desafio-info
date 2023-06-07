@@ -265,7 +265,6 @@ export class ProductRepository implements IProductRepository {
       if (error?.code == "P2025") {
         throw new BusinessExceptions("Produto não encontrado!", "ProductNotFound", 404);
       }
-
       throw error
     }
   }
@@ -277,25 +276,36 @@ export class ProductRepository implements IProductRepository {
     if (!list) {
       list = await this.prismaClient.listProduct.create({
         data: {
-          name: "",
+          name: "Lista de Favoritos",
         }
       })
     }
 
-    return await this.prismaClient.listProduct.findUnique({
+    const updatedList = await this.prismaClient.listProduct.findUnique({
       where: { id: list.id },
       include: {
         products: {
           include: {
             product: {
               include: {
-                category: true,
-              },
-            },
-          },
-        },
-      },
+                category: true
+              }
+            }
+          }
+        }
+      }
     });
+
+
+    return {
+      id: updatedList?.id, name: updatedList?.name, products: updatedList?.products.map(product => {
+        return { ...product.product, idRelation: product.id }
+      })
+    }
+  }
+
+  async getProductCategories() {
+    return await this.prismaClient.category.findMany();
   }
 
 }
