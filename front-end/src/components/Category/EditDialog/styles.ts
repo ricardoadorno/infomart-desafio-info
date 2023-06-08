@@ -8,25 +8,6 @@ import {
   DialogClose,
 } from "@radix-ui/react-dialog";
 
-export const CreateItem = styled.div`
-  background-color: ${(props) => props.theme.colors.gray};
-  width: 100%;
-  height: 217px;
-  cursor: pointer;
-  display: flex;
-  flex: 3;
-  margin: 1rem 0;
-  gap: 0.5rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  small {
-    color: ${(props) => props.theme.colors.primary};
-    font-weight: 700;
-  }
-`;
-
 export const StyledDialogOverlay = styled(DialogOverlay)`
   background-color: #ff5a1161;
   position: fixed;
@@ -87,6 +68,8 @@ export const StyledImputGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+
+  }
 `;
 
 export const StyledDialogClose = styled(DialogClose)`

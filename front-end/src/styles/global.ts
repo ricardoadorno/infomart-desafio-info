@@ -17,6 +17,33 @@ input, button{
     outline: none;
 }
 
+input {
+    background: ${(props) => props.theme.colors.gray};
+    border-radius: 36px;
+    border: none;
+    padding: 10px;
+    width: 100%;
+
+    &::placeholder {
+      color: ${(props) => props.theme.colors.placeholder};
+    }
+  }
+
+  button {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
+}
+
+  .container {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
 body, input, button, textarea {
     font-family: 'Mulish', sans-serif;
     font-size: 1rem;

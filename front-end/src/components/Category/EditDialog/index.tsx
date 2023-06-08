@@ -5,22 +5,13 @@ import {
   StyledDialogContent,
   StyledDialogClose,
   StyledImputGroup,
-  CreateItem,
 } from "./styles";
 import Image from "next/image";
 
 export default () => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
-      <CreateItem>
-        <Image
-          src="/icons/add-item.png"
-          width={84}
-          height={84}
-          alt="Adicionar item"
-        />
-        <small>Crie seu item</small>
-      </CreateItem>
+      <button>Editar</button>
     </Dialog.Trigger>
     <Dialog.Portal>
       <StyledDialogOverlay />
@@ -65,7 +56,7 @@ export default () => (
               placeholder="Digite a categoria"
             />
           </StyledImputGroup>
-          <button>+ Adicionar à lista</button>
+          <button>Confirmar Edição</button>
         </section>
       </StyledDialogContent>
     </Dialog.Portal>
