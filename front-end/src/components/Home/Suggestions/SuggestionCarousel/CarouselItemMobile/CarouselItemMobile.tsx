@@ -15,7 +15,7 @@ export default function CarouselItemMobile({
 }) {
   return (
     <Item>
-      <Image
+      <img
         draggable="false"
         src={item.imageUrl}
         width={111}
