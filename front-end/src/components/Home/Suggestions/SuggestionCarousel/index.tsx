@@ -9,6 +9,7 @@ import {
   CarouselMobile,
   SelectorCarouselMobileElement,
 } from "./styles";
+import { ProductType } from "@/types";
 
 const itemsPropsPlaceholder = [
   {
@@ -43,23 +44,27 @@ const itemsPropsPlaceholder = [
   },
 ];
 
-export default function SuggestionCarousel() {
+export default function SuggestionCarousel({
+  itens,
+}: {
+  itens: ProductType[];
+}) {
   const [currentCarouselItem, setCurrentCarouselItem] = useState(0);
 
   return (
     <CarouselContainer>
       <h3>Algumas sugestões</h3>
       <Carousel>
-        {itemsPropsPlaceholder.map((itemPropsPlaceholder, index) => (
-          <CarouselItem key={index} item={itemPropsPlaceholder} />
+        {itens.map((item, index) => (
+          <CarouselItem key={index} item={item} />
         ))}
       </Carousel>
 
       <CarouselMobile>
-        {itemsPropsPlaceholder
+        {itens
           .slice(currentCarouselItem, currentCarouselItem + 2)
-          .map((itemPropsPlaceholder, index) => (
-            <CarouselItemMobile key={index} item={itemPropsPlaceholder} />
+          .map((item, index) => (
+            <CarouselItemMobile key={index} item={item} />
           ))}
         <section>
           {itemsPropsPlaceholder.map((_, index) => (

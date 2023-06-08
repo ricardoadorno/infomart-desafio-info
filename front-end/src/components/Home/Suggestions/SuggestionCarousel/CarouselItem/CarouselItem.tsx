@@ -1,17 +1,11 @@
 import Image from "next/image";
 import { Item, ItemInfo } from "./styles";
+import { ProductType } from "@/types";
 
-interface CarouselItemProps {
-  name: string;
-  price: number;
-  category: string;
-  imageUrl: string;
-}
-
-export default function CarouselItem({ item }: { item: CarouselItemProps }) {
+export default function CarouselItem({ item }: { item: ProductType }) {
   return (
     <Item>
-      <Image
+      <img
         draggable="false"
         src={item.imageUrl}
         width={245}
