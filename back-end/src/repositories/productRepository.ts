@@ -63,6 +63,8 @@ export class ProductRepository implements IProductRepository {
       })
       if (!!categoryEntity) {
         filters.categoryId = { contains: categoryEntity.id }
+      }else{
+        return [];
       }
 
     }
