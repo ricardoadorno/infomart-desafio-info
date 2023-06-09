@@ -96,13 +96,15 @@ export default function EditDialog({ itemId }: { itemId: string }) {
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
               />
             </StyledImputGroup>
-            <button
-              onClick={() => {
-                handleEditItem(itemId);
-              }}
-            >
-              Confirmar Edição
-            </button>
+            <Dialog.Close>
+              <button
+                onClick={() => {
+                  handleEditItem(itemId);
+                }}
+              >
+                Confirmar Edição
+              </button>
+            </Dialog.Close>
           </section>
         </StyledDialogContent>
       </Dialog.Portal>

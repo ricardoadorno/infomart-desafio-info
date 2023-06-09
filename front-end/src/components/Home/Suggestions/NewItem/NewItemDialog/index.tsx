@@ -105,7 +105,9 @@ export default function NewItemDialog() {
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
               />
             </StyledImputGroup>
-            <button onClick={handleCreateItem}>+ Adicionar à lista</button>
+            <Dialog.Close>
+              <button onClick={handleCreateItem}>+ Adicionar à lista</button>
+            </Dialog.Close>
           </section>
         </StyledDialogContent>
       </Dialog.Portal>
