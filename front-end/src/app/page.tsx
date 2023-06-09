@@ -1,11 +1,12 @@
 "use client";
 import { styled } from "styled-components";
 
+
 export default function Home() {
   return (
-    <>
-      <Title>InfoMart</Title>
-    </>
+    <Title>
+      home
+    </Title>
   );
 }
 
