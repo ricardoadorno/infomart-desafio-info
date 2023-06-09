@@ -4,7 +4,7 @@ import { CardsContainer, CategoriesContainer } from "./styles";
 export default function Categories() {
   return (
     <CategoriesContainer>
-      <h2>Categories</h2>
+      <h2>Categorias</h2>
 
       <CardsContainer>
         <CategoryCard
