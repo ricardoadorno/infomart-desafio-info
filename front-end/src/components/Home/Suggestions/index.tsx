@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import NewItem from "./NewItem";
 import SuggestionCarousel from "./SuggestionCarousel";
 import { SuggestionsContainer, SuggestionsDivider } from "./styles";
