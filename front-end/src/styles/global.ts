@@ -1,4 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+"use client"
+
+import { createGlobalStyle, styled } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -10,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
     background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.black};
 }
 
 input, button{
@@ -63,5 +66,10 @@ a {
     .p{
         font-size: ${({ theme }) => theme.fontSizes.pMobile};
     }
-    }
+}
 `;
+
+export const Container = styled.div`
+    width: 80%;
+    margin: 0 auto;
+`

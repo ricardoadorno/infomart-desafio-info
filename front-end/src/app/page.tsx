@@ -1,13 +1,23 @@
-import Categories from "@/components/Home/Categories";
-import Hero from "@/components/Home/Hero";
-import Suggestions from "@/components/Home/Suggestions";
+"use client";
+import { styled } from "styled-components";
+
 
 export default function Home() {
   return (
-    <main className="container">
-      <Hero />
-      <Suggestions />
-      <Categories />
-    </main>
+    <Title>
+      home
+    </Title>
   );
 }
+
+const Title = styled.h1`
+  font-size: 4.5em;
+  text-align: center;
+  color: ${(props) => props.theme.colors.primary};
+  font-family: ${(props) => props.theme.fonts.serif};
+  font-weight: 700;
+
+  @media ${(props) => props.theme.media.sm} {
+    font-size: 2.5em;
+  }
+`;

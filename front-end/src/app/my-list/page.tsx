@@ -1,24 +1,31 @@
-import Item from "./itens";
+import { Container } from "@/styles/global";
 import { ListContainer, ListContent } from "./styles";
 
-export default function MyList(){
-    return (
-        <ListContainer>
-            <h1 className="h2">Sua lista</h1>
-            <ListContent>
-            {/*     <section className="empty">
-                    <h1 className="h2">Sua lista está vazia!</h1>
-                    <p className="emptyDescription h4">
-                        Para inserir produtos basta clicar no botão “+ Lista” debaixo dos itens!
-                    </p>
-                    <a className="homeButton" href="/">Home</a>
-                </section> */}
+import Lists from "@/components/lists";
 
-                <Item />
-     
-            </ListContent>
-         
-        </ListContainer>
-        
-    )
+const fetchData = async () => {
+  const response = await fetch("http://localhost:5000/products", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    cache: "no-store",
+  });
+
+  const data = await response.json();
+  return data;
+};
+
+export default async function MyList() {
+  const apiData = await fetchData();
+
+  return (
+    <Container>
+      <ListContainer>
+        <h1 className="h2">Sua lista</h1>
+        <ListContent>
+          <Lists apiData={apiData} />
+        </ListContent>
+      </ListContainer>
+    </Container>
+  );
 }
