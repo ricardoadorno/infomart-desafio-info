@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CarouselItem from "./CarouselItem/CarouselItem";
 import CarouselItemMobile from "./CarouselItemMobile/CarouselItemMobile";
 import {
@@ -10,39 +10,6 @@ import {
   SelectorCarouselMobileElement,
 } from "./styles";
 import { ProductType } from "@/types";
-
-const itemsPropsPlaceholder = [
-  {
-    name: "Item 0",
-    price: 49.99,
-    category: "Fruta",
-    imageUrl: "/images/placeholder.png",
-  },
-  {
-    name: "Item 1",
-    price: 49.99,
-    category: "Fruta",
-    imageUrl: "/images/placeholder.png",
-  },
-  {
-    name: "Item 2",
-    price: 49.99,
-    category: "Fruta",
-    imageUrl: "/images/placeholder.png",
-  },
-  {
-    name: "Item 3",
-    price: 49.99,
-    category: "Fruta",
-    imageUrl: "/images/placeholder.png",
-  },
-  {
-    name: "Item 4",
-    price: 49.99,
-    category: "Fruta",
-    imageUrl: "/images/placeholder.png",
-  },
-];
 
 export default function SuggestionCarousel({
   itens,
@@ -62,12 +29,12 @@ export default function SuggestionCarousel({
 
       <CarouselMobile>
         {itens
-          .slice(currentCarouselItem, currentCarouselItem + 2)
+          .slice(currentCarouselItem, currentCarouselItem + 1)
           .map((item, index) => (
             <CarouselItemMobile key={index} item={item} />
           ))}
         <section>
-          {itemsPropsPlaceholder.map((_, index) => (
+          {itens.map((_, index) => (
             <SelectorCarouselMobileElement
               key={index}
               className={index === currentCarouselItem ? "active" : ""}

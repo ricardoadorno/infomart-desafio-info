@@ -7,9 +7,10 @@ export type CreateProductType = {
 };
 
 export type ProductType = {
+  id: string;
   name: string;
   price: number;
-  category: string;
+  categoryName: string;
   categoryId: string;
   imageUrl: string;
   description: string;

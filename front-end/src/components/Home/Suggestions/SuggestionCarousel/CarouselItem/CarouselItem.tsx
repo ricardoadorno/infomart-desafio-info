@@ -1,8 +1,14 @@
-import Image from "next/image";
 import { Item, ItemInfo } from "./styles";
 import { ProductType } from "@/types";
 
 export default function CarouselItem({ item }: { item: ProductType }) {
+  async function handleAddToList(id: string) {
+    return fetch(`http://localhost:5000/products/list/${id}`, {
+      method: "POST",
+      cache: "no-cache",
+    });
+  }
+
   return (
     <Item>
       <img
@@ -15,9 +21,9 @@ export default function CarouselItem({ item }: { item: ProductType }) {
       <ItemInfo>
         <p>{item.name}</p>
         <span>R$ {item.price}</span>
-        <small> Categoria: {item.category}</small>
+        <small> Categoria: {item.categoryName}</small>
       </ItemInfo>
-      <button>+ Lista</button>
+      <button onClick={() => handleAddToList(item.id)}>+ Lista</button>
     </Item>
   );
 }

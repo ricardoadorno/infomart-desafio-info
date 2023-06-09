@@ -1,18 +1,6 @@
-import Image from "next/image";
 import { Item, ItemInfo } from "./styles";
 
-interface CarouselItemProps {
-  name: string;
-  price: number;
-  category: string;
-  imageUrl: string;
-}
-
-export default function CarouselItemMobile({
-  item,
-}: {
-  item: CarouselItemProps;
-}) {
+export default function CarouselItemMobile({ item }: { item: ProductType }) {
   return (
     <Item>
       <img

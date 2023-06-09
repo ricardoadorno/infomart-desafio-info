@@ -1,32 +1,41 @@
+"use client";
+
+import { ProductType } from "@/types";
 import EditDialog from "../EditDialog";
 import { ButtonGroup, Item, ItemContent } from "./styles";
-import Image from "next/image";
 
-interface ItemCardProps {
-  id: number;
-  name: string;
-  price: number;
-  imgURL: string;
-}
+export default function ItemCard({ item }: { item: ProductType }) {
+  async function handleAddToList(id: string) {
+    return fetch(`http://localhost:5000/products/list/${id}`, {
+      method: "POST",
+      cache: "no-cache",
+    });
+  }
 
-export default function ItemCard(ItemPlaceholder: ItemCardProps) {
+  async function handleDeleteItem(id: string) {
+    return fetch(`http://localhost:5000/products/${id}`, {
+      method: "DELETE",
+    });
+  }
+
   return (
     <Item>
-      <Image
-        width={245}
-        height={208}
-        src={ItemPlaceholder.imgURL}
-        alt={ItemPlaceholder.name}
-      />
+      <img width={245} height={208} src={item.imageUrl} alt={item.name} />
       <ItemContent>
         <div>
-          <h2>{ItemPlaceholder.name}</h2>
-          <span>R$ {ItemPlaceholder.price}</span>
+          <h2>{item.name}</h2>
+          <span>R$ {item.price}</span>
         </div>
         <ButtonGroup>
-          <button>Adicionar</button>
-          <EditDialog />
-          <button>Excluir</button>
+          <button onClick={() => handleAddToList(item.id)}>Adicionar</button>
+          <EditDialog itemId={item.id} />
+          <button
+            onClick={() => {
+              handleDeleteItem(item.id);
+            }}
+          >
+            Excluir
+          </button>
         </ButtonGroup>
       </ItemContent>
     </Item>
