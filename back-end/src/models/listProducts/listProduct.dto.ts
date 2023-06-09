@@ -37,7 +37,7 @@ export class ListProductsDto {
         this.name = name;
         this.products = [];
         products.forEach(product => {
-            this.products.push(new ListProductsItemDto("22", product.name, product.price,
+            this.products.push(new ListProductsItemDto(product.id, product.name, product.price,
                 product.category.id, product.category.name, product.imageUrl, product.description, product.idRelation))
         })
     }
