@@ -1,3 +1,10 @@
+export interface Product {
+  id: number;
+  imageUrl: string;
+  name: string;
+  price: number;
+  categoryName: string;
+}
 export type CreateProductType = {
   name: string;
   price: number;
@@ -22,3 +29,4 @@ export type ListProductType = {
   name: string;
   products: ProductType[];
 };
+
