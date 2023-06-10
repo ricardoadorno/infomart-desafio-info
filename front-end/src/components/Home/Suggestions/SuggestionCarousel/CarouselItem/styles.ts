@@ -10,8 +10,8 @@ export const Item = styled.div`
   gap: 1rem;
 
   img {
-    width: 100%;
-    height: auto;
+    width: 225px;
+    height: 188px;
     border-radius: 10px;
   }
 `;

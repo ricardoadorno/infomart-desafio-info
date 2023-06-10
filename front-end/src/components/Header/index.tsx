@@ -4,7 +4,10 @@ import infoListLogo from "../../assets/infoListLogo.svg";
 import Cart from "../../assets/Cart.svg";
 import searchIcon from "../../assets/searchIcon.svg";
 import { useState } from "react";
+
 import { Container } from "@/styles/global";
+import Link from "next/link";
+
 
 export default function Header() {
   const [Toggle, showMenu] = useState(false);
