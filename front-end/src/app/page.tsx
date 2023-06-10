@@ -3,7 +3,7 @@ import Hero from "@/components/Home/Hero";
 import Suggestions from "@/components/Home/Suggestions";
 import { ProductType } from "@/types";
 
-async function getSuggetions() {
+export async function getSuggetions() {
   return fetch("http://localhost:5000/products?&pageSize=6", {
     cache: "no-store",
   }).then((res) => res.json());

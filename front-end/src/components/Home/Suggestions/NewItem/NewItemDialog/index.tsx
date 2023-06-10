@@ -30,6 +30,12 @@ export default function NewItemDialog() {
         category: form.category,
         imageUrl: form.imageUrl,
       }),
+    }).then((res) => {
+      if (res.ok) {
+        alert("Item criado com sucesso!");
+      } else {
+        alert("Erro ao criar item!");
+      }
     });
   }
 

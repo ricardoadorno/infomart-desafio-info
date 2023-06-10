@@ -3,8 +3,16 @@
 import { ProductType } from "@/types";
 import EditDialog from "../EditDialog";
 import { ButtonGroup, Item, ItemContent } from "./styles";
+import { useQuery } from "@tanstack/react-query";
+import { getItemsByCategory } from "@/app/categories/[category]/page";
 
-export default function ItemCard({ item }: { item: ProductType }) {
+export default function ItemCard({ item }: { item: ProductType[] }) {
+  const { data } = useQuery<ProductType[]>({
+    queryKey: ["posts"],
+    queryFn: getItemsByCategory,
+    initialData: item,
+  });
+
   async function handleAddToList(id: string) {
     return fetch(`http://localhost:5000/products/list/${id}`, {
       method: "POST",
@@ -18,6 +26,16 @@ export default function ItemCard({ item }: { item: ProductType }) {
     });
   }
 
+  return (
+    <Item>
+      {data.map((item, index) => (
+        <LoopItem key={index} {...item} />
+      ))}
+    </Item>
+  );
+}
+
+function LoopItem(item: ProductType) {
   return (
     <Item>
       <img width={245} height={208} src={item.imageUrl} alt={item.name} />

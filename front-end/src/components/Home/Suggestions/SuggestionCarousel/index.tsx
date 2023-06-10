@@ -10,6 +10,8 @@ import {
   SelectorCarouselMobileElement,
 } from "./styles";
 import { ProductType } from "@/types";
+import { getSuggetions } from "@/app/page";
+import { useQuery } from "@tanstack/react-query";
 
 export default function SuggestionCarousel({
   itens,
@@ -18,11 +20,17 @@ export default function SuggestionCarousel({
 }) {
   const [currentCarouselItem, setCurrentCarouselItem] = useState(0);
 
+  const { data } = useQuery<ProductType[]>({
+    queryKey: ["posts"],
+    queryFn: getSuggetions,
+    initialData: itens,
+  });
+
   return (
     <CarouselContainer>
       <h3>Algumas sugestões</h3>
       <Carousel>
-        {itens.map((item, index) => (
+        {data.map((item, index) => (
           <CarouselItem key={index} item={item} />
         ))}
       </Carousel>

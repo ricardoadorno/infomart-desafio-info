@@ -5,6 +5,7 @@ import { theme } from "@/styles/theme";
 import { GlobalStyles } from "@/styles/global";
 import { ThemeProvider } from "styled-components";
 import Header from "@/components/Header";
+import Providers from "@/lib/providers";
 
 export const metadata = {
   title: "InfoMart",
@@ -33,8 +34,10 @@ export default function RootLayout({
             />
           </head>
           <body>
-            <Header />
-            {children}
+            <Providers>
+              <Header />
+              {children}
+            </Providers>
           </body>
         </html>
       </ThemeProvider>
